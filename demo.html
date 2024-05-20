@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 50vh;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: center;
+
+      span:nth-child(3){
+        order: 1;
+        align-self: self-end;
+      }
+      
+      * {
+        flex-basis: 100px;
+        flex-shrink: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div style="border: 5px solid black;">
+    <span style="background-color: violet;">Violet</span>
+    <span style="background-color: indigo; color: white;">Indigo</span>
+    <span style="background-color: blue; color: white;">Blue</span>
+    <span style="background-color: green; color: white;">Green</span>
+    <span style="background-color: yellow;">Yellow</span>
+    <span style="background-color: orange;">Orange</span>
+    <span style="background-color: red;">Red</span>
+  </div>
+</body>
+</html>

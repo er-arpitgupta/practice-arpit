@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neumorphic Analog Clock</title>
+    <style>
+        body {
+            background-color: #e0e5ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .clock {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: #d9dbe1;
+            box-shadow: inset 6px 6px 12px #c5c9d1, inset -6px -6px 12px #e4e7ec;
+        }
+
+        .hour-labels {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .hour-label {
+            position: absolute;
+            color: #8796af;
+            font-size: 14px;
+        }
+
+        .hour-hand,
+        .minute-hand,
+        .second-hand {
+            position: absolute;
+            background: #afc3fd;
+            border-radius: 4px;
+        }
+
+        .hour-hand {
+            width: 4px;
+            height: 50px;
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+        }
+
+        .minute-hand {
+            width: 3px;
+            height: 70px;
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+        }
+
+        .second-hand {
+            width: 2px;
+            height: 90px;
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+        }
+
+        .center-circle {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: #d9dbe1;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 4px 4px 8px #c5c9d1, -4px -4px 8px #e4e7ec;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="hour-labels"></div>
+        <div class="hour-hand"></div>
+        <div class="minute-hand"></div>
+        <div class="second-hand"></div>
+        <div class="center-circle"></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            const hourHand = document.querySelector('.hour-hand');
+            const minuteHand = document.querySelector('.minute-hand');
+            const secondHand = document.querySelector('.second-hand');
+
+            const hourDegrees = ((hours % 12) + minutes / 60) * 30;
+            const minuteDegrees = (minutes + seconds / 60) * 6;
+            const secondDegrees = seconds * 6;
+
+            hourHand.style.transform = `translate(-50%, -100%) rotate(${hourDegrees}deg)`;
+            minuteHand.style.transform = `translate(-50%, -100%) rotate(${minuteDegrees}deg)`;
+            secondHand.style.transform = `translate(-50%, -100%) rotate(${secondDegrees}deg)`;
+
+            // Update hour labels in Roman numerals
+            const hourLabels = document.querySelector('.hour-labels');
+            hourLabels.innerHTML = '';
+            const romanNumerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+            for (let i = 0; i < 12; i++) {
+                const hourLabel = document.createElement('div');
+                hourLabel.classList.add('hour-label');
+                hourLabel.style.transform = `rotate(${i * 30}deg) translate(0, -80px)`;
+                hourLabel.textContent = romanNumerals[i];
+                hourLabels.appendChild(hourLabel);
+            }
+        }
+
+        // Update clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial call to set the clock to the current time
+        updateClock();
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time and Date</title>
+    <style>
+        .clock {
+            text-align: center;
+            color: #144272;
+            font-weight: 800;
+        }
+
+        .time {
+            font-size: 1em;
+        }
+
+        .date {
+            font-size: 0.7em;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div id="time" class="time"></div>
+        <div id="date" class="date"></div>
+    </div>
+    <div class="clock short">
+        <div id="short-time" class="time"></div>
+        <div id="short-date" class="date"></div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date();
+
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            const strTime = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
+
+            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            const strDate = now.toLocaleDateString('en-GB', options);
+
+            document.getElementById('time').textContent = strTime;
+            document.getElementById('date').textContent = strDate;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function updateShortClock() {
+            const now = new Date();
+
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const strTime = `${String(hours).padStart(2, '0')}:${minutes} ${ampm}`;
+
+            const options = { year: 'numeric', month: 'short', day: 'numeric' };
+            const strDate = now.toLocaleDateString('en-GB', options);
+
+            document.getElementById('short-time').textContent = strTime;
+            document.getElementById('short-date').textContent = strDate;
+        }
+
+        setInterval(updateShortClock, 1000);
+        updateShortClock();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neumorphic Digital Clock</title>
+    <style>
+        body {
+            background-color: #e0e5ec;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .clock-container {
+            background: #e0e5ec;
+            border-radius: 30px;
+            box-shadow: 20px 20px 60px #c2c8d1, -20px -20px 60px #feffff;
+            padding: 20px;
+        }
+
+        .clock {
+            display: flex;
+            align-items: center;
+            font-size: 3em;
+            color: #7289da;
+        }
+
+        .time {
+            background: #e0e5ec;
+            border-radius: 15px;
+            padding: 10px 20px;
+            box-shadow: inset 5px 5px 10px #c2c8d1, inset -5px -5px 10px #feffff;
+            margin: 0 10px;
+        }
+
+        span {
+            color: #7289da;
+            font-size: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock-container">
+        <div class="clock">
+            <div id="hours" class="time">00</div>
+            <span>:</span>
+            <div id="minutes" class="time">00</div>
+            <span>:</span>
+            <div id="seconds" class="time">00</div>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // initial call to set the clock immediately
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waveform Design</title>
+    <style>
+        body {
+            background-color: #ece6df;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .waveform-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .bar {
+            width: 4px;
+            background-color: #43686c;
+            margin: 0 2px;
+            border-radius: 2px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .bar:nth-child(odd) {
+            animation-duration: 1s;
+        }
+
+        .bar:nth-child(even) {
+            animation-duration: 2s;
+        }
+
+        .bar:nth-child(1) {
+            height: 20px;
+        }
+
+        .bar:nth-child(2) {
+            height: 30px;
+        }
+
+        .bar:nth-child(3) {
+            height: 25px;
+        }
+
+        .bar:nth-child(4) {
+            height: 35px;
+        }
+
+        .bar:nth-child(5) {
+            height: 20px;
+        }
+
+        .bar:nth-child(6) {
+            height: 40px;
+        }
+
+        .bar:nth-child(7) {
+            height: 45px;
+        }
+
+        .bar:nth-child(8) {
+            height: 30px;
+        }
+
+        .bar:nth-child(9) {
+            height: 50px;
+        }
+
+        .bar:nth-child(10) {
+            height: 25px;
+        }
+
+        .bar:nth-child(11) {
+            height: 20px;
+        }
+
+        .bar:nth-child(12) {
+            height: 30px;
+        }
+
+        .bar:nth-child(13) {
+            height: 35px;
+        }
+
+        .bar:nth-child(14) {
+            height: 25px;
+        }
+
+        .bar:nth-child(15) {
+            height: 40px;
+        }
+
+        .bar:nth-child(16) {
+            height: 20px;
+        }
+
+        .bar:nth-child(17) {
+            height: 45px;
+        }
+
+        .bar:nth-child(18) {
+            height: 30px;
+        }
+
+        .bar:nth-child(19) {
+            height: 50px;
+        }
+
+        .bar:nth-child(20) {
+            height: 25px;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scaleY(1);
+            }
+
+            50% {
+                transform: scaleY(0.5);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="waveform-container">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</body>
+
+</html>

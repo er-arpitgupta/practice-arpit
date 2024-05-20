@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            background: #010101;
+            cursor: none;
+            margin: 0;
+            display: flex;
+            font-family: monospace;
+
+            h1,
+            p,
+            a {
+                color: #fff;
+            }
+
+            a {
+                border-bottom: 2px solid #fff;
+                padding: 10px 0;
+                margin-top: 25px;
+            }
+
+            .cursor {
+                pointer-events: none;
+
+                .cursor__ball {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    mix-blend-mode: difference;
+                    z-index: 1000;
+
+                    circle {
+                        fill: #f7f8fa;
+                    }
+                }
+            }
+
+            .left,
+            .right {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .right {
+                background: #fff;
+
+                a {
+                    border-bottom: 2px solid #000;
+                }
+
+                h1,
+                p,
+                a {
+                    color: #000;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cursor">
+        <div class="cursor__ball cursor__ball--big ">
+            <svg height="30" width="30">
+                <circle cx="15" cy="15" r="12" stroke-width="0"></circle>
+            </svg>
+        </div>
+
+        <div class="cursor__ball cursor__ball--small">
+            <svg height="10" width="10">
+                <circle cx="5" cy="5" r="4" stroke-width="0"></circle>
+            </svg>
+        </div>
+    </div>
+
+    <div class="left">
+        <h1>Hello</h1>
+        <p>Check out this link:</p>
+        <a class="hoverable">Hover meh</a>
+    </div>
+
+    <div class="right">
+        <h1>Hello</h1>
+        <p>Check out this link:</p>
+        <a class="hoverable">Hover meh</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script>
+        const $bigBall = document.querySelector('.cursor__ball--big');
+        const $smallBall = document.querySelector('.cursor__ball--small');
+        const $hoverables = document.querySelectorAll('.hoverable');
+
+        // Listeners
+        document.body.addEventListener('mousemove', onMouseMove);
+        for (let i = 0; i < $hoverables.length; i++) {
+            $hoverables[i].addEventListener('mouseenter', onMouseHover);
+            $hoverables[i].addEventListener('mouseleave', onMouseHoverOut);
+        }
+
+        // Move the cursor
+        function onMouseMove(e) {
+            TweenMax.to($bigBall, .4, {
+                x: e.pageX - 15,
+                y: e.pageY - 15
+            })
+            TweenMax.to($smallBall, .1, {
+                x: e.pageX - 5,
+                y: e.pageY - 7
+            })
+        }
+
+        // Hover an element
+        function onMouseHover() {
+            TweenMax.to($bigBall, .3, {
+                scale: 4
+            })
+        }
+        function onMouseHoverOut() {
+            TweenMax.to($bigBall, .3, {
+                scale: 1
+            })
+        }
+    </script>
+</body>
+
+</html>
