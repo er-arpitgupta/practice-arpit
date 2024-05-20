@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<title>Sign Up</title>
+
+<style type="text/css">
+	div.box{
+	height: 0px;
+	width: 285px;
+	padding:10px;
+	}
+	h1.create{
+	color:white;
+	border-radius: 10px;
+	border-top-left-radius: 40px 40px;
+	border-bottom-right-radius: 4px 4px;
+	border-bottom: 4px solid black;
+	border-right: 4px solid black;
+	padding:10px;
+	background-color: DarkCyan;
+	}
+	div.two{
+	text-align:center;
+	font-family: Berlin Sans FB;
+	font-size: 19px;
+	height:300px;
+	width:310px;
+	border-radius:20px;
+	border-color: grey;
+	border-bottom: 4px solid;
+	border-right: 4px solid;
+	float: right;
+	padding:10px;
+	margin: 0px 100px 0px 0px;
+	}
+	input{
+	border-radius: 10px;
+	}
+
+}
+</style>
+</head>
+
+<body>
+<br><br>
+	<div class="main">
+		<div class="box">
+		<h1 class="create">Create an Account</h1>
+		</div>
+		<br><br>
+		<div class="two">
+			<form action="http://google.com" onsubmit="return checkForm(this);">
+				<input type="text" name="username" size="16" maxlength="15" required pattern="\w+" placeholder=" First Name">
+				<input type="text" name="username" size="16" maxlength="15" required placeholder=" Last Name">
+				<br><br>
+				<input type="email" name="email" size="40px" required placeholder=" E-mail Address e.g.:abc@gmail/yahoo.com" pattern=".+@gmail.com" pattern=".+@yahoo.com">
+				<br><br>
+				<input id="male" type="radio" name="gender" value="m" required>Male
+				<input id="female" type="radio" name="gender" value="f" required>Female
+				<br><br>
+				Date of Birth : <input type="date" name="dob" required>
+				<br><br>
+				<input title="Password must contain at least 6 characters, including UPPER/lowercase and numbers" type="password" size=40px minlength="6" maxlength="20" required placeholder=" Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd1" onchange="
+				this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+				if(this.checkValidity()) form.pwd2.pattern = RegExp.escape(this.value);
+				">
+				<br><br>
+				<input title="Please enter the same Password as above" type="password" size=40px maxlength="20" required placeholder=" Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" name="pwd2" onchange="
+				this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+				">
+				<br><br>
+				<input type="submit" value="Sign-Up" title="Sign-Up and redirect to Google">
+			</form>
+		</div>
+	</div>
+	
+</body>
+</html>
